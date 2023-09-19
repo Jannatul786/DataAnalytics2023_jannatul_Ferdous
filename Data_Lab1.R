@@ -19,9 +19,9 @@ EPI_data_2010
 View(EPI_data_2010)
 EPI_data_2010$EPI #prints out values from data file which has column "EPI"
 
-tf <- is.na(EPI) #records true values if the value is NA
+tf <- is.na(EPI_data_2010$EPI) #records true values if the value is NA
 tf
-E <- EPI[!tf] #filters out NA values , new array
+E <- EPI_data_2010$EPI[!tf] #filters out NA values , new array
 E
 
 
