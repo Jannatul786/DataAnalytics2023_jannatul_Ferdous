@@ -24,7 +24,6 @@ tf
 E <- EPI_data_2010$EPI[!tf] #filters out NA values , new array
 E
 
-
 #read the xls/xlsx files,
 #install.packages("readxl")
 #library("readxl")#Loading

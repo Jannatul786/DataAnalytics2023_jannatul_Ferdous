@@ -1,16 +1,36 @@
+#Excersise 1 : Exploring the Distribution
+#---------------------------------------#
+
 setwd("D:/DIBA/ITWS_4600/Resources/EPI_Dataset")
-data <- read.csv("EPI_Data.csv")
-View(data)
+EPI_data_2010 <- read.csv("EPI_data_2010.csv")
+View(EPI_data_2010)
 
-attach(data) #sets the default object
-data
-fix(data) #Launches a simple data editor
-data$EPI #prints out values from data file which has column "EPI"
+attach(EPI_data_2010) #sets the default object
+fix(EPI_data_2010) #Launches a simple data editor
+names(EPI_data_2010) <- as.matrix(EPI_data_2010[1,])
+EPI_data_2010 <- EPI_data_2010[-1,] #change the first row to be the header in R
+#or,
+EPI_data_2010[] <- lapply(EPI_data_2010, function(x){
+  type.convert(as.character(x))
+})
+EPI_data_2010
+View(EPI_data_2010)
+EPI_data_2010$EPI #prints out values from data file which has column "EPI"
 
-tf <- is.na(data$EPI) #records true values if the value is NA
+tf <- is.na(EPI_data_2010$EPI) #records true values if the value is NA
 tf
-E <- data$EPI[!tf] #filters out NA values , new array
+E <- EPI_data_2010$EPI[!tf] #filters out NA values , new array
 E
-summary(EPI) #stats
-fivenum(EPI, na.rm = TRUE)
-help("fivenum")
+summary(EPI_data_2010$EPI) #stats
+fivenum(EPI_data_2010$EPI, na.rm = TRUE)
+stem(EPI_data_2010$EPI) 
+#Stem and Leaf plot is a technique of displaying the frequencies with which some classes of values may occur. 
+#output: records are arranged based on their most significant digit. The stem is the left side of the chart while the right side is the leaf.
+hist(EPI_data_2010$EPI)
+hist(EPI_data_2010$EPI, seq(30.,95.,1.0), prob = TRUE)
+lines(density(EPI_data_2010$EPI, na.rm = TRUE, bw = 1.)) 
+#OR,
+lines(density(EPI_data_2010$EPI, na.rm = TRUE, bw = "SJ"))
+rug(EPI_data_2010$EPI)
+#A rug plot is a compact visualisation designed to supplement a 2d display with the two 1d marginal distributions.
+#Rug plots display individual cases so are best used with smaller datasets.
