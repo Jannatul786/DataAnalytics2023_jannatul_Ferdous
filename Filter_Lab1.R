@@ -13,8 +13,6 @@ EPI_data_2010$GEO_subregion
 
 # Conditional filtering
 #Landlock
-#EPILand <- EPI_data_2010[!EPI_data_2010$Landlock, ]
-#View(EPILand)
 EPILand <- EPI_data_2010[!EPI_data_2010$Landlock, ]
 View(EPILand)
 Eland <- EPILand[!is.na(EPILand$Landlock), ]
