@@ -25,8 +25,8 @@ E <- EPI_data_2010$EPI[!tf] #filters out NA values , new array
 E
 
 #read the xls/xlsx files,
-#install.packages("readxl")
-#library("readxl")#Loading
+install.packages("readxl")
+library("readxl")#Loading
 
 #install.packages("rio")
 #library(rio)
@@ -36,6 +36,8 @@ E
 #View(data)
 #data$EPI
 #read xls files
+#EPI_data_2010 <- read_excel("EPI_data_2010.xls", sheet = "EPI2010_all countries")
+#EPI_data_2010$EPI
 #EPI_data_2010 <- read_excel("EPI_data_2010.xls")
 #EPI_data_2010
 #sheet_names <- excel_sheets("EPI_data_2010.xls")

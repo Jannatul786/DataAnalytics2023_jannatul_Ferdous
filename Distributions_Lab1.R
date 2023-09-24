@@ -7,8 +7,12 @@ View(EPI_data_2010)
 attach(EPI_data_2010)
 names(EPI_data_2010) <- as.matrix(EPI_data_2010[1,])
 EPI_data_2010 <- EPI_data_2010[-1,] #change the first row to be the header in R
+EPI_data_2010[] <- lapply(EPI_data_2010, function(x){
+  type.convert(as.character(x))
+})
 View(EPI_data_2010)
 EPI_data_2010$EPI
+class(EPI_data_2010$EPI)
 
 #Cumulative density function
 #~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -46,6 +50,8 @@ qqline(x)
 #~~~~For DALY~~~~~~#
 plot(ecdf(EPI_data_2010$DALY), do.points = FALSE, verticals = TRUE)
 par(pty = "s")
+class(EPI_data_2010$DALY)
+summary(EPI_data_2010$DALY)
 qqnorm(EPI_data_2010$DALY)
 qqline(EPI_data_2010$DALY)
 x <- seq(30,95,1)
@@ -61,17 +67,22 @@ qqplot(qt(ppoints(250), df=5), x, xlab = "Q-Q plot for t-distribution")
 qqline(x)
 
 #intercomparing the distributions
-qqplot(EPI_data_2010$EPI, EPI_data_2010$DALY)
-qqplot(EPI_data_2010$EPI, EPI_data_2010$ECOSYSTEM)
-qqplot(EPI_data_2010$EPI, EPI_data_2010$ENVHEALTH)
-qqplot(EPI_data_2010$EPI, EPI_data_2010$AIR_H)
-qqplot(EPI_data_2010$EPI, EPI_data_2010$WATER_H)
-qqplot(EPI_data_2010$EPI, EPI_data_2010$BIODIVERSITY)
+qqplot(EPI_data_2010$EPI, EPI_data_2010$DALY, xlab = "EPI", ylab = "DALY")
+qqplot(EPI_data_2010$EPI, EPI_data_2010$ECOSYSTEM, xlab = "EPI", ylab = "ECOSYSTEM")
+qqplot(EPI_data_2010$EPI, EPI_data_2010$ENVHEALTH, xlab = "EPI", ylab = "ENVHEALTH")
+qqplot(EPI_data_2010$EPI, EPI_data_2010$AIR_H,xlab = "EPI", ylab = "AIR_H")
+qqplot(EPI_data_2010$EPI, EPI_data_2010$WATER_H,xlab = "EPI", ylab = "WATER_H")
+qqplot(EPI_data_2010$EPI, EPI_data_2010$BIODIVERSITY, xlab = "EPI", ylab = "BIODIVERSITY")
 
-boxplot(EPI_data_2010$EPI, EPI_data_2010$DALY)
-boxplot(EPI_data_2010$EPI, EPI_data_2010$ECOSYSTEM)
-boxplot(EPI_data_2010$EPI, EPI_data_2010$ENVHEALTH)
-boxplot(EPI_data_2010$EPI, EPI_data_2010$AIR_H)
-boxplot(EPI_data_2010$EPI, EPI_data_2010$WATER_H)
-boxplot(EPI_data_2010$EPI, EPI_data_2010$BIODIVERSITY)
+boxplot(EPI_data_2010$EPI, EPI_data_2010$DALY, names = c('EPI', 'DALY'))
+boxplot(EPI_data_2010$EPI, EPI_data_2010$ECOSYSTEM, names = c('EPI', 'ECOSYSTEM'))
+boxplot(EPI_data_2010$EPI, EPI_data_2010$ENVHEALTH, names = c('EPI', 'ENVHEALTH'))
+boxplot(EPI_data_2010$EPI, EPI_data_2010$AIR_H, names = c('EPI', 'AIR_H'))
+boxplot(EPI_data_2010$EPI, EPI_data_2010$WATER_H, names = c('EPI', 'WATER_H'))
+boxplot(EPI_data_2010$EPI, EPI_data_2010$BIODIVERSITY, names = c('EPI', 'BIODIVERSITY'))
+
+#Plot()
+plot(EPI_data_2010$EPI, EPI_data_2010$DALY, xlab = "EPI", ylab = "DALY")
+plot(EPI_data_2010$Population07, EPI_data_2010$WATER_H, xlab = "Population07", ylab = "WATER_H")
+
 
