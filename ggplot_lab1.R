@@ -22,5 +22,7 @@ library(ggplot2)
 qplot(pressure$temperature, pressure$pressure, xlab = "temperature", ylab = "pressure",geom = "line")
 qplot(temperature, pressure, data = pressure, xlab = "temperature", ylab = "pressure",geom="line")
 
-ggplot(pressure, aes(x=temperature,y=pressure))+geom_line(color="orange",size=2)+geom_point(color="red",size=2)
-ggplot(pressure, aes(temperature,pressure))+geom_line()+geom_point()
+#lines and points together
+ggplot(pressure, aes(x=temperature,y=pressure))+geom_line(color="orange")+geom_point(color="red",size=2)
+#this is also equivalent to:
+qplot(temperature,pressure, data= pressure, geom = c("line","point"))
