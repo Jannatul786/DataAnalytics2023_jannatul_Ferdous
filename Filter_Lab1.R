@@ -13,9 +13,8 @@ EPI_data_2010$GEO_subregion
 
 # Conditional filtering
 #Landlock
-#EPILand <- EPI_data_2010[!EPI_data_2010$Landlock, ]
-#View(EPILand)
-EPILand <- EPI_data_2010[!EPI_data_2010$Landlock]
+EPILand <- EPI_data_2010[!EPI_data_2010$Landlock, ]
+View(EPILand)
 Eland <- EPILand[!is.na(EPILand$Landlock), ]
 View(Eland)
 
@@ -26,4 +25,3 @@ View(EPI_South_Asia)
 # Filter for Central Europe and Meso America in GEO_Subregion
 CenralEurope_MesoAmerica <- subset(EPI_data_2010, GEO_subregion %in% c("Central Europe", "Meso America"))
 View(CenralEurope_MesoAmerica)
-
